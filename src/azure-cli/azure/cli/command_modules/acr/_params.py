@@ -138,6 +138,9 @@ def load_arguments(self, _):  # pylint: disable=too-many-statements
     with self.argument_context('acr update') as c:
         c.argument('allow_metadata_search', arg_type=get_three_state_flag(), is_preview=True, help="Enable or disable the metadata-search feature for the registry.")
 
+    with self.argument_context('acr update') as c:
+        c.argument('dual_stack_endpoints_enabled', arg_type=get_three_state_flag(), help="Enable dual stack (IPv4 and IPv6) endpoints for the registry.")
+
     with self.argument_context('acr import') as c:
         c.argument('source_image', options_list=['--source'], help="Source image name or fully qualified source containing the registry login server. If `--registry` is used, `--source` will always be interpreted as a source image, even if it contains the login server.")
         c.argument('source_registry', options_list=['--registry', '-r'], help='The source Azure container registry. This can be name, login server or resource ID of the source registry.')
